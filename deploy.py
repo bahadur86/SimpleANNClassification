@@ -51,15 +51,15 @@ input_data = pd.DataFrame({
 ## one hot encodr geography
 geography_encoded = one_hot_encoder_geography.transform([[geography]]).toarray()
 geo_encoded_df = pd.DataFrame(geography_encoded, columns=one_hot_encoder_geography.get_feature_names_out(['Geography']))
-geo_encoded_df
+
 
 ## One-hot encode the geography with input data
 input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis=1)
-input_data
+
 
 #scaler the input data
 input_data_scaled = scaler.transform(input_data);
-input_data_scaled
+
 
 #Prediction Exited
 prediction = model.predict(input_data_scaled)
